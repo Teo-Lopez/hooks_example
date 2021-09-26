@@ -17,7 +17,7 @@ function Pokedex(props) {
     fetchPokeData(getIdFromURL())
       .then(res => fillData(res.data))
       .catch(err => console.log(err))
-  }, [])
+  }, [props.match.params.id])
 
   return (
     <Card style={{ width: '18rem' }}>
