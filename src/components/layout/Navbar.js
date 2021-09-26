@@ -15,6 +15,7 @@ const MainNavbar = () => {
           <Dropdown.Toggle as={NavLink}>Choose your pokemon!</Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Item><Link to="/pokemon/132">Ditto</Link></Dropdown.Item>
+            <Dropdown.Item><Link to="/custom/pokemon/1">Bulbasaur</Link></Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>;
       </Container>

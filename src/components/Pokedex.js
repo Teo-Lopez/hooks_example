@@ -2,11 +2,12 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Card, Button } from 'react-bootstrap'
 
-function Pokedex(props) {
+const getIdFromURL = (url) => url.params.id
+
+const Pokedex = (props) => {
   const [name, setName] = useState("")
   const [imageUrl, setImageUrl] = useState("")
 
-  const getIdFromURL = () => props.match.params.id
   const fetchPokeData = (id) => axios.get(`https://pokeapi.co/api/v2/pokemon-form/${id}`)
   const fillData = (data) => {
     setName(data.pokemon.name)
@@ -14,10 +15,10 @@ function Pokedex(props) {
   }
 
   useEffect(() => {
-    fetchPokeData(getIdFromURL())
+    fetchPokeData(getIdFromURL(props.match))
       .then(res => fillData(res.data))
       .catch(err => console.log(err))
-  }, [props.match.params.id])
+  }, [props.match])
 
   return (
     <Card style={{ width: '18rem' }}>
