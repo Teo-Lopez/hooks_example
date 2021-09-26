@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import {
+  Switch, Route
+} from "react-router-dom";
+import { Container } from 'react-bootstrap'
+import SimpleInput from './components/SimpleInput';
+import SimpleForm from "./components/SimpleForm";
+import MainNavbar from "./components/layout/Navbar";
+import Pokedex from "./components/Pokedex";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <MainNavbar />
+      <Container>
+        <div className="first-section">
+          <Switch>
+            <Route exact path="/" render={() => <SimpleInput />} />
+            <Route exact path="/simple/input" render={() => <SimpleInput />} />
+            <Route exact path="/simple/form" render={() => <SimpleForm />} />
+            <Route exact path="/pokemon/:id" render={(props) => <Pokedex {...props} />} />
+          </Switch>
+        </div>
+      </Container>
+    </>
   );
 }
 
